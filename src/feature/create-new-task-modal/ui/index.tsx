@@ -3,6 +3,7 @@ import { DialogContent, DialogHeader, DialogTitle } from "@/shared/ui/dialog";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
 import { Button } from "@/shared/ui/button";
+import { Textarea } from "@/shared/ui/textarea";
 
 interface CreateTaskModalProps {
   variant: "new" | "edit";
@@ -17,6 +18,7 @@ interface ImportanceLevelType {
 
 export function CreateTaskModal({ variant, onClose }: CreateTaskModalProps) {
   const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [visibility, setVisibility] = useState<"private" | "public">("private");
   const [loading, setLoading] = useState<boolean>(false);
   const [importance, setImportance] = useState<"low" | "medium" | "high">(
@@ -81,10 +83,10 @@ export function CreateTaskModal({ variant, onClose }: CreateTaskModalProps) {
 
         <div className="space-y-2">
           <Label>Описание задачи</Label>
-          <Input
+          <Textarea
             placeholder="Введите описание задачи"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             disabled={loading}
           />
         </div>
