@@ -1,9 +1,9 @@
 import UserAvatar from "@/entities/user-dropdown/ui";
 import { CreateProjectModal } from "@/feature/create-new-project-modal/ui";
-import DeleteProjectModal from "@/feature/delete-project-modal/ui";
+import DeleteModal from "@/feature/delete-modal/ui";
 import { ModeToggle } from "@/feature/mode-toggle.tsx";
 import { Button } from "@/shared/ui/button";
-import { Dialog } from "@/shared/ui/dialog"; // Убрал DialogTrigger, он здесь не нужен
+import { Dialog } from "@/shared/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ const Header = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
 
   return (
-    <header className="w-full flex justify-between items-center rounded-lg py-2 px-4 bg-secondary">
+    <header className="w-full flex justify-between shadow-lg shadow-secondary z-50 items-center rounded-lg py-2 px-4 bg-secondary">
       <div className="flex items-center gap-2">
         <h1 className="text-2xl font-semibold">Project Name 1</h1>
 
@@ -32,7 +32,10 @@ const Header = () => {
         </Dialog>
 
         <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
-          <DeleteProjectModal onClose={() => setIsDeleteOpen(false)} />
+          <DeleteModal
+            variant="delete"
+            onClose={() => setIsDeleteOpen(false)}
+          />
         </Dialog>
 
         <DropdownMenu>

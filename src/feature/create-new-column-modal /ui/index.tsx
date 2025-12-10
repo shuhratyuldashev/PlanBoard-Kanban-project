@@ -17,12 +17,30 @@ interface CreateProjectModalProps {
 }
 
 const colors = [
-  { className: "bg-primary", label: "Акцентный", value: "accent", isFree: true },
-  { className: "bg-secondary", label: "Вторичный", value: "secondary", isFree: true },
-  { className: "bg-amber-400", label: "Золотой", value: "golden", isFree: false }
+  {
+    className: "bg-primary",
+    label: "Акцентный",
+    value: "accent",
+    isFree: true,
+  },
+  {
+    className: "bg-secondary",
+    label: "Вторичный",
+    value: "secondary",
+    isFree: true,
+  },
+  {
+    className: "bg-amber-400",
+    label: "Золотой",
+    value: "golden",
+    isFree: false,
+  },
 ];
 
-export function CreateColumntModal({ variant, onClose }: CreateProjectModalProps) {
+export function CreateColumntModal({
+  variant,
+  onClose,
+}: CreateProjectModalProps) {
   const [name, setName] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("secondary"); // по умолчанию secondary
   const [loading, setLoading] = useState<boolean>(false);
@@ -45,7 +63,9 @@ export function CreateColumntModal({ variant, onClose }: CreateProjectModalProps
   return (
     <DialogContent className="max-w-sm">
       <DialogHeader>
-        <DialogTitle>{variant === "new" ? "Новый проект" : "Редактировать проект"}</DialogTitle>
+        <DialogTitle>
+          {variant === "new" ? "Новый проект" : "Редактировать проект"}
+        </DialogTitle>
       </DialogHeader>
 
       <div className="space-y-4">

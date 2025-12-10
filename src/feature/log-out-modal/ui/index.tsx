@@ -1,6 +1,7 @@
 import { Button } from "@/shared/ui/button";
 import {
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -12,7 +13,9 @@ const LogOutModal = ({ onClose }: { onClose: () => void }) => {
       <DialogHeader>
         <DialogTitle>Выйти из аккаунта?</DialogTitle>
       </DialogHeader>
-      <p>Вы уверены, что хотите выйти из аккаунта?</p>
+      <DialogDescription>
+        Вы уверены, что хотите выйти из аккаунта?
+      </DialogDescription>
       <DialogFooter className="grid grid-cols-2">
         <Button size="lg" variant="secondary" onClick={onClose}>
           Отмена
