@@ -1,3 +1,4 @@
+// src/widgets/colum/task-item.tsx
 import { Button } from "@/shared/ui/button";
 import {
   Item,
@@ -10,31 +11,71 @@ import {
 } from "@/shared/ui/item";
 import { GripVertical, Pen, Trash } from "lucide-react";
 import { Dialog, DialogTrigger } from "@/shared/ui/dialog";
-import { CreateTaskModal } from "@/feature/create-new-task-modal/ui";
 import DeleteModal from "@/feature/delete-modal/ui";
 import { useState } from "react";
 import type { TaskType } from "@/shared/mock/columns";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { CreateTaskModal } from "@/feature/create-new-task-modal/ui";
 
-export function TaskItem({ task }: { task: TaskType }) {
+export function TaskItem({
+  task,
+}: {
+  task: TaskType;
+}) {
   const [isDeleteTaskModalOpen, setIsDeleteTaskModalOpen] =
     useState<boolean>(false);
+
+  // useSortable возвращает сеттер ref, трансформ/transition для анимации,
+  // и drag-listeners/attributes, которые мы можем поместить на handle.
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: task.id,
+    data: {
+      type: "task",
+      columnId: task.columnId,
+    },
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    // optional: слегка поднять таску при drag
+    zIndex: isDragging ? 40 : "auto",
+  } as React.CSSProperties;
+
+  const importanceBg =
+    task.importance === "low"
+      ? "bg-green-500"
+      : task.importance === "medium"
+      ? "bg-yellow-500"
+      : "bg-red-500";
+
   return (
-    <Item className="bg-background" key={task.id}>
+    // Item wrapper оставляем, но навешиваем ref и стиль от useSortable
+    <Item className="bg-background" ref={setNodeRef as any} style={style} key={task.id}>
       <ItemMedia>
-        <Button variant="ghost">
+        {/* drag handle: навешиваем listeners и attributes на кнопку */}
+        <Button variant="ghost" {...attributes} {...listeners}>
           <GripVertical />
         </Button>
       </ItemMedia>
       <ItemContent>
         <ItemHeader>
           <div
-            className={`${task.importance === "low" ? "bg-green-500" : task.importance === "medium" ? "bg-yellow-500" : "bg-red-500"} px-2 py-1 rounded-md font-semibold text-white flex items-center justify-center`}
+            className={`${importanceBg} px-2 py-1 rounded-md font-semibold text-white flex items-center justify-center`}
           >
-            {task.importance == "low"
+            {task.importance === "low"
               ? "Низкий"
-              : task.importance == "medium"
-                ? "Средний"
-                : "Высокий"}
+              : task.importance === "medium"
+              ? "Средний"
+              : "Высокий"}
           </div>
         </ItemHeader>
         <ItemTitle>{task.title}</ItemTitle>
@@ -46,6 +87,7 @@ export function TaskItem({ task }: { task: TaskType }) {
                 <Pen />
               </Button>
             </DialogTrigger>
+            {/* если хотите убрать модалку редактирования — просто удалите этот блок */}
             <CreateTaskModal variant="edit" />
           </Dialog>
           <Dialog
