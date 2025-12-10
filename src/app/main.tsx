@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-kit">
+    <ThemeProvider defaultTheme="system">
       <App />
     </ThemeProvider>
   </BrowserRouter>,
