@@ -5,11 +5,22 @@ import { useParams } from "react-router-dom";
 import { Dialog, DialogTrigger } from "@/shared/ui/dialog";
 import { Button } from "@/shared/ui/button";
 import { CreateColumntModal } from "@/feature/create-new-column-modal /ui";
-import { columns_list as columnsMock, tasks_list as tasksMock, type TaskType } from "@/shared/mock/columns";
+import {
+  columns_list as columnsMock,
+  tasks_list as tasksMock,
+  type TaskType,
+} from "@/shared/mock/columns";
 import Column from "@/widgets/colum/ui";
 import { ScrollArea, ScrollBar } from "@/shared/ui/scroll-area";
 import { Bot } from "lucide-react";
-import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useMemo, useState } from "react";
 
@@ -37,7 +48,9 @@ const buildInitialColumns = (): ColumnsState => {
 
 const ProjectPage = () => {
   const { projectId } = useParams();
-  const [columns, setColumns] = useState<ColumnsState>(() => buildInitialColumns());
+  const [columns, setColumns] = useState<ColumnsState>(() =>
+    buildInitialColumns(),
+  );
 
   const sensors = useSensors(useSensor(PointerSensor));
 
@@ -74,7 +87,11 @@ const ProjectPage = () => {
       if (sourceIndex === destIndex) return;
       setColumns((prev) => {
         const next = structuredClone(prev) as ColumnsState;
-        next[sourceColId].tasks = arrayMove(next[sourceColId].tasks, sourceIndex, destIndex);
+        next[sourceColId].tasks = arrayMove(
+          next[sourceColId].tasks,
+          sourceIndex,
+          destIndex,
+        );
         return next;
       });
       return;
@@ -119,12 +136,21 @@ const ProjectPage = () => {
 
         <div className="h-[calc(100vh-4rem)]">
           <ScrollArea className="h-full">
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={onDragEnd}
+            >
               <div className="flex flex-nowrap gap-4 p-4 h-full">
                 {cols.map((c) => (
                   <div key={c.id} className="w-80 h-full">
                     <ScrollArea className="h-full">
-                      <Column columnId={c.id} title={c.title} color={c.color} tasks={c.tasks} />
+                      <Column
+                        columnId={c.id}
+                        title={c.title}
+                        color={c.color}
+                        tasks={c.tasks}
+                      />
                       <ScrollBar orientation="vertical" />
                     </ScrollArea>
                   </div>

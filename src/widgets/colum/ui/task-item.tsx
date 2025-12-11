@@ -18,11 +18,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { CreateTaskModal } from "@/feature/create-new-task-modal/ui";
 
-export function TaskItem({
-  task,
-}: {
-  task: TaskType;
-}) {
+export function TaskItem({ task }: { task: TaskType }) {
   const [isDeleteTaskModalOpen, setIsDeleteTaskModalOpen] =
     useState<boolean>(false);
 
@@ -54,12 +50,17 @@ export function TaskItem({
     task.importance === "low"
       ? "bg-green-500"
       : task.importance === "medium"
-      ? "bg-yellow-500"
-      : "bg-red-500";
+        ? "bg-yellow-500"
+        : "bg-red-500";
 
   return (
     // Item wrapper оставляем, но навешиваем ref и стиль от useSortable
-    <Item className="bg-background" ref={setNodeRef as any} style={style} key={task.id}>
+    <Item
+      className="bg-background"
+      ref={setNodeRef as any}
+      style={style}
+      key={task.id}
+    >
       <ItemMedia>
         {/* drag handle: навешиваем listeners и attributes на кнопку */}
         <Button variant="ghost" {...attributes} {...listeners}>
@@ -74,8 +75,8 @@ export function TaskItem({
             {task.importance === "low"
               ? "Низкий"
               : task.importance === "medium"
-              ? "Средний"
-              : "Высокий"}
+                ? "Средний"
+                : "Высокий"}
           </div>
         </ItemHeader>
         <ItemTitle>{task.title}</ItemTitle>

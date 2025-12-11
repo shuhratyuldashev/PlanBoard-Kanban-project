@@ -1,4 +1,5 @@
 import LogOutModal from "@/feature/log-out-modal/ui";
+import NotificationsModal from "@/feature/notificantions-modal";
 import SettingsModal from "@/feature/settings-modal";
 import { UpdateProfileModal } from "@/feature/update-profile-modal";
 import { userData } from "@/shared/mock/user-data";
@@ -19,7 +20,8 @@ const UserAvatar = () => {
   const [isLogOutOpen, setIsLogOutOpen] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
-
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState<boolean>(false);
+  
   return (
     <>
       <DropdownMenu>
@@ -46,7 +48,7 @@ const UserAvatar = () => {
             <UsersRound />
             Друзья
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setIsProfileOpen(true)}>
+          <DropdownMenuItem onClick={() => setIsNotificationsOpen(true)}>
             <Mail />
             Увдомления
           </DropdownMenuItem>
@@ -86,6 +88,9 @@ const UserAvatar = () => {
           }}
           defaultValues={{}}
         />
+      </Dialog>
+      <Dialog open={isNotificationsOpen} onOpenChange={setIsNotificationsOpen}>
+        <NotificationsModal />
       </Dialog>
     </>
   );

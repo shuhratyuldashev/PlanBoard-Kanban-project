@@ -15,14 +15,14 @@ export interface TaskType {
 
 // mock колонок
 export const columns_list: ColumnType[] = [
-  { id: "c1", title: "Backlog",        color: "bg-secondary" },
-  { id: "c2", title: "Planned",        color: "bg-secondary" },
-  { id: "c3", title: "In Progress",    color: "bg-secondary" },
-  { id: "c4", title: "Review",         color: "bg-primary" },
-  { id: "c5", title: "Debugging",      color: "bg-secondary" },
-  { id: "c6", title: "Testing",        color: "bg-amber-500" },
-  { id: "c7", title: "Completed",      color: "bg-primary" },
-  { id: "c8", title: "Deployed",       color: "bg-green-600" },
+  { id: "c1", title: "Backlog", color: "bg-secondary" },
+  { id: "c2", title: "Planned", color: "bg-secondary" },
+  { id: "c3", title: "In Progress", color: "bg-secondary" },
+  { id: "c4", title: "Review", color: "bg-primary" },
+  { id: "c5", title: "Debugging", color: "bg-secondary" },
+  { id: "c6", title: "Testing", color: "bg-amber-500" },
+  { id: "c7", title: "Completed", color: "bg-primary" },
+  { id: "c8", title: "Deployed", color: "bg-green-600" },
 ];
 
 // mock задач

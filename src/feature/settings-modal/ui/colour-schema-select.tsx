@@ -21,7 +21,7 @@ const colors = [
     label: "Оранжевый",
     className: "bg-orange-500 text-white",
   },
-  { value: "yellow", label: "Жёлтый", className: "bg-yellow-400 text-black" }
+  { value: "yellow", label: "Жёлтый", className: "bg-yellow-400 text-black" },
 ];
 
 export const ColorSchemeSelect = () => {

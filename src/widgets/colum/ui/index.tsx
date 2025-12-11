@@ -6,7 +6,10 @@ import { Pen, Trash } from "lucide-react";
 import { useState } from "react";
 import { TaskItem } from "./task-item";
 import type { TaskType } from "@/shared/mock/columns";
-import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 import { CreateTaskModal } from "@/feature/create-new-task-modal/ui";
 import { CreateColumntModal } from "@/feature/create-new-column-modal /ui";
 // Добавили импорт useDroppable из ядра dnd-kit
@@ -36,8 +39,8 @@ export default function Column({
 
   return (
     // Навешиваем ref на родительский div колонки
-    <div 
-      ref={setNodeRef} 
+    <div
+      ref={setNodeRef}
       className={`flex flex-col gap-4 ${color} rounded-lg p-4 h-full`}
     >
       <div
