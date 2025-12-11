@@ -20,8 +20,9 @@ const UserAvatar = () => {
   const [isLogOutOpen, setIsLogOutOpen] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState<boolean>(false);
-  
+  const [isNotificationsOpen, setIsNotificationsOpen] =
+    useState<boolean>(false);
+
   return (
     <>
       <DropdownMenu>

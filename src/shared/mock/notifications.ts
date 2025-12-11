@@ -3,11 +3,10 @@ export type NotificationType = {
   title: string;
   message: string;
   type: "info" | "success" | "warning" | "error";
-  createdAt: string; 
+  createdAt: string;
   read: boolean;
-  userId?: string; 
+  userId?: string;
 };
-
 
 export const notificationsMock: NotificationType[] = [
   {

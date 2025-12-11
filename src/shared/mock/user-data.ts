@@ -1,4 +1,3 @@
-
 export interface UserType {
   id: string;
   name: string;
@@ -95,48 +94,51 @@ export const usersData: UserWithRoleType[] = [
     role: "editor",
     password: "password123",
     avatar:
-    "https://basket-23.wbbasket.ru/vol3959/part395989/395989869/images/big/1.webp",
+      "https://basket-23.wbbasket.ru/vol3959/part395989/395989869/images/big/1.webp",
     fallback: "ПG",
     online: true,
-  },{
+  },
+  {
     id: "8",
     name: "Щерзод Ташкентски",
     email: "user2@example.com",
     role: "viewer",
     password: "password123",
-    avatar:
-    "https://www.centralasia-travel.com/upload/text/kebab-02.jpg",
+    avatar: "https://www.centralasia-travel.com/upload/text/kebab-02.jpg",
     fallback: "УЗ",
     online: false,
-  },{
+  },
+  {
     id: "9",
     name: "Niga lilo",
     email: "user2@example.com",
     role: "editor",
     password: "password123",
     avatar:
-    "https://i.pinimg.com/736x/15/98/d6/1598d68c4f1fd76e853a0ab3a61c3c13.jpg",
+      "https://i.pinimg.com/736x/15/98/d6/1598d68c4f1fd76e853a0ab3a61c3c13.jpg",
     fallback: "NL",
     online: false,
-  },{
+  },
+  {
     id: "10",
     name: "MINI KNIGHT",
     email: "user2@example.com",
     role: "viewer",
     password: "password123",
     avatar:
-    "https://i.pinimg.com/736x/6c/8e/61/6c8e6183d9ea570bfc84a8be3af61386.jpg",
+      "https://i.pinimg.com/736x/6c/8e/61/6c8e6183d9ea570bfc84a8be3af61386.jpg",
     fallback: "ML",
     online: false,
-  },{
+  },
+  {
     id: "11",
     name: "Это Мужик",
     email: "user2@example.com",
     role: "viewer",
     password: "password123",
     avatar:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluBl7MtE4JcAMmeagZYtCgZDNTZvsI0TCYw&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluBl7MtE4JcAMmeagZYtCgZDNTZvsI0TCYw&s",
     fallback: "ЭМ",
     online: false,
-  }
+  },
 ];
