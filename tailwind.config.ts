@@ -6,6 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         accent: "rgb(var(--accent) / <alpha-value>)",
+        
       },
     },
   },

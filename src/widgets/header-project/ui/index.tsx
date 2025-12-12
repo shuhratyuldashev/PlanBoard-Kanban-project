@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { EllipsisIcon, ExternalLink, Pen, Trash } from "lucide-react";
+import { EllipsisIcon, Pen, Trash, UserRoundCog } from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
@@ -120,7 +120,7 @@ const Header = () => {
         <Dialog>
           <DialogTrigger>
             <Button size="icon-sm" className="ml-2">
-              <ExternalLink />
+              <UserRoundCog />
             </Button>
           </DialogTrigger>
           <UsersModal />

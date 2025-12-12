@@ -2,20 +2,13 @@ import {
   notificationsMock,
   type NotificationType,
 } from "@/shared/mock/notifications";
+import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import {
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/dialog";
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemGroup,
-  ItemMedia,
-  ItemTitle,
-} from "@/shared/ui/item";
 import { ScrollArea, ScrollBar } from "@/shared/ui/scroll-area";
 import { CheckIcon, InfoIcon, TriangleAlert, XIcon } from "lucide-react";
 
@@ -28,22 +21,18 @@ export default function NotificationsModal() {
       </DialogHeader>
 
       <ScrollArea className="max-h-[400px]">
-        <ItemGroup className="space-y-3">
+        <div className="space-y-3">
           {notificationsMock.map((n: NotificationType) => (
-            <Item variant="muted" key={n.id}>
-              <ItemMedia>
-                {n.type === "info" && <InfoIcon />}
-                {n.type === "success" && <CheckIcon />}
-                {n.type === "warning" && <TriangleAlert />}
-                {n.type === "error" && <XIcon />}
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>{n.title}</ItemTitle>
-                <ItemDescription>{n.message}</ItemDescription>
-              </ItemContent>
-            </Item>
+            <Alert variant={n.type === "info" ? "default" : n.type === "success" ? "success" : n.type === "warning" ? "warning" : "destructive"} key={n.id}>
+              {n.type === "info" && <InfoIcon />}
+              {n.type === "success" && <CheckIcon />}
+              {n.type === "warning" && <TriangleAlert />}
+              {n.type === "error" && <XIcon />}
+              <AlertTitle>{n.title}</AlertTitle>
+              <AlertDescription>{n.message}</AlertDescription>
+            </Alert>
           ))}
-        </ItemGroup>
+        </div>
         <ScrollBar orientation="vertical" />
       </ScrollArea>
     </DialogContent>

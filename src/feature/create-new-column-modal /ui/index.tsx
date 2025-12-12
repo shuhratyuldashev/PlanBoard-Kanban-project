@@ -30,11 +30,16 @@ const colors = [
     isFree: true,
   },
   {
-    className: "bg-amber-400",
+    className: "bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-600",
     label: "Золотой",
     value: "golden",
     isFree: false,
-  },
+  },{
+    className: "bg-gradient-to-br from-green-300 via-green-500 to-green-900",
+    label: "Изумрудный",
+    value: "emerald",
+    isFree: false,
+  }
 ];
 
 export function CreateColumntModal({
@@ -95,7 +100,7 @@ export function CreateColumntModal({
                   disabled={!c.isFree}
                   key={c.value}
                   value={c.value}
-                  className={c.isFree ? "" : "bg-secondary"}
+                  className={`${c.isFree ? "" : "bg-secondary"} mt-1`}
                 >
                   <div className="flex items-center gap-2">
                     <div className={`h-4 w-4 rounded-full ${c.className}`} />

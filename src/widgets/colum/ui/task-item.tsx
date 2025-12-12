@@ -62,7 +62,6 @@ export function TaskItem({ task }: { task: TaskType }) {
       key={task.id}
     >
       <ItemMedia>
-        {/* drag handle: навешиваем listeners и attributes на кнопку */}
         <Button variant="ghost" {...attributes} {...listeners}>
           <GripVertical />
         </Button>
@@ -88,7 +87,6 @@ export function TaskItem({ task }: { task: TaskType }) {
                 <Pen />
               </Button>
             </DialogTrigger>
-            {/* если хотите убрать модалку редактирования — просто удалите этот блок */}
             <CreateTaskModal variant="edit" />
           </Dialog>
           <Dialog

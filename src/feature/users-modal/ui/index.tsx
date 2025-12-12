@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/dialog";
+import { Input } from "@/shared/ui/input";
 import {
   Item,
   ItemActions,
@@ -24,22 +25,42 @@ import {
   SelectLabel,
   SelectTrigger,
 } from "@/shared/ui/select";
-import { UserRoundX } from "lucide-react";
+import { Search, UserRoundPlus, UserRoundX } from "lucide-react";
 
 export default function UsersModal() {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Список всех пользователей</DialogTitle>
+        <DialogTitle>Список всех участников</DialogTitle>
         <DialogDescription>
-          Список всех пользователей работающих над проектом
+          Список всех участников проекта
         </DialogDescription>
       </DialogHeader>
+
+      <div className="flex gap-2">
+        <Button variant="outline" size="icon-lg"><Search /></Button>
+        <Input placeholder="Поиск участников..."/>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <Item variant="muted">
+          <ItemContent>
+            <ItemTitle className="text-xs">Количество участников в сети</ItemTitle>
+            <h1 className="text-2xl font-bold">{usersData.length}</h1>
+          </ItemContent>
+        </Item>
+        <Item variant="muted">
+          <ItemContent>
+            <ItemTitle className="text-xs">Количество всех участников</ItemTitle>
+            <h1 className="text-2xl font-bold">{usersData.length}</h1>
+          </ItemContent>
+        </Item>
+      </div>
 
       <ScrollArea className="h-[400px]">
         <div className="space-y-2 pr-2">
           {usersData.map((u: UserWithRoleType) => (
-            <Item key={u.id} variant="muted">
+            <Item className={u.online ? "bg-primary" : ""} key={u.id} variant="muted">
               <ItemMedia>
                 <Avatar
                   className={
@@ -56,8 +77,8 @@ export default function UsersModal() {
               </ItemMedia>
 
               <ItemContent>
-                <ItemTitle>{u.name}</ItemTitle>
-                <ItemDescription>{u.email}</ItemDescription>
+                <ItemTitle className="font-semibold">{u.name}</ItemTitle>
+                <ItemDescription className={u.online ? "text-white" : ""}>{u.email}</ItemDescription>
               </ItemContent>
 
               <ItemActions>
@@ -84,6 +105,7 @@ export default function UsersModal() {
               </ItemActions>
             </Item>
           ))}
+          <Button variant="secondary" className="w-full mt-6"><UserRoundPlus />Пригласить нового участника</Button>
         </div>
 
         <ScrollBar orientation="vertical" />
