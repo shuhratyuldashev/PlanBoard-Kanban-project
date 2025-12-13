@@ -22,7 +22,7 @@ export const columns_list: ColumnType[] = [
   { id: "c5", title: "Debugging", color: "bg-secondary" },
   { id: "c6", title: "Testing", color: "bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-600 " },
   { id: "c7", title: "Completed", color: "bg-primary" },
-  { id: "c8", title: "Deployed", color: "bg-gradient-to-br from-green-300 via-green-500 to-green-900" },
+  { id: "c8", title: "Deployed", color: "bg-gradient-to-br from-green-300 via-green-500 to-green-700" },
 ];
 
 // mock задач

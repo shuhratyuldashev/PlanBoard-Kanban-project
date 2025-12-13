@@ -2,6 +2,7 @@ import UserCard from "@/entities/user-card";
 import UserAvatar from "@/entities/user-dropdown/ui";
 import { CreateProjectModal } from "@/feature/create-new-project-modal/ui";
 import DeleteModal from "@/feature/delete-modal/ui";
+import InviteNewUserModal from "@/feature/invite-new-user-modal/ui";
 import { ModeToggle } from "@/feature/mode-toggle.tsx";
 import UsersModal from "@/feature/users-modal/ui";
 import { usersData, type UserWithRoleType } from "@/shared/mock/user-data";
@@ -15,7 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { EllipsisIcon, Pen, Trash, UserRoundCog } from "lucide-react";
+import { EllipsisIcon, Pen, Trash, UserRoundCog, UserRoundPlus } from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
@@ -124,6 +125,14 @@ const Header = () => {
             </Button>
           </DialogTrigger>
           <UsersModal />
+        </Dialog>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="ml-2">
+              <UserRoundPlus /> Пригласить нового учатсника
+            </Button>
+          </DialogTrigger>
+          <InviteNewUserModal />
         </Dialog>
       </div>
 

@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { LogOut, Mail, Settings, UserRoundPen, UsersRound } from "lucide-react";
+import { LogOut, Mail, Settings, UserRoundPen } from "lucide-react";
 import { useState } from "react";
 
 const UserAvatar = () => {
@@ -45,10 +45,6 @@ const UserAvatar = () => {
           </div>
           <DropdownMenuSeparator />
           <DropdownMenuLabel>Пользователь</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => setIsProfileOpen(true)}>
-            <UsersRound />
-            Друзья
-          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setIsNotificationsOpen(true)}>
             <Mail />
             Увдомления

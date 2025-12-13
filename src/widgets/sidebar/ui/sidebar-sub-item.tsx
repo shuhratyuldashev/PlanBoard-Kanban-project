@@ -32,7 +32,7 @@ export default function SidebarSubItem({
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-sm"
+            className="text-sm font-medium"
           >
             {label}
           </motion.span>
@@ -44,7 +44,7 @@ export default function SidebarSubItem({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 4 }}
                 transition={{ duration: 0.15, ease: "easeOut" }}
-                className="absolute left-full top-1/2 transform -translate-y-1/2 ml-1 z-50 whitespace-nowrap bg-primary text-white text-xs px-2 py-1 rounded-md shadow-lg"
+                className="absolute font-medium left-full top-1/2 transform -translate-y-1/2 ml-1 z-50 whitespace-nowrap bg-primary text-white text-xs px-2 py-1 rounded-md shadow-lg"
               >
                 {label}
               </motion.div>

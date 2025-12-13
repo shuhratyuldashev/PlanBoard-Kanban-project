@@ -25,7 +25,7 @@ import {
   SelectLabel,
   SelectTrigger,
 } from "@/shared/ui/select";
-import { Search, UserRoundPlus, UserRoundX } from "lucide-react";
+import { Search, UserRoundX } from "lucide-react";
 
 export default function UsersModal() {
   return (
@@ -60,7 +60,7 @@ export default function UsersModal() {
       <ScrollArea className="h-[400px]">
         <div className="space-y-2 pr-2">
           {usersData.map((u: UserWithRoleType) => (
-            <Item className={u.online ? "bg-primary" : ""} key={u.id} variant="muted">
+            <Item className={u.online ? "bg-primary text-white" : ""} key={u.id} variant="muted">
               <ItemMedia>
                 <Avatar
                   className={
@@ -81,7 +81,7 @@ export default function UsersModal() {
                 <ItemDescription className={u.online ? "text-white" : ""}>{u.email}</ItemDescription>
               </ItemContent>
 
-              <ItemActions>
+              <ItemActions className="text-secondary-foreground">
                 <Select value={u.role}>
                   <SelectTrigger className="bg-white">
                     {u.role === "viewer" && "Viewer"}
@@ -105,7 +105,6 @@ export default function UsersModal() {
               </ItemActions>
             </Item>
           ))}
-          <Button variant="secondary" className="w-full mt-6"><UserRoundPlus />Пригласить нового участника</Button>
         </div>
 
         <ScrollBar orientation="vertical" />

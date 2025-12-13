@@ -35,10 +35,15 @@ const colors = [
     value: "golden",
     isFree: false,
   },{
-    className: "bg-gradient-to-br from-green-300 via-green-500 to-green-900",
+    className: "bg-gradient-to-br from-green-300 via-green-500 to-green-700",
     label: "Изумрудный",
     value: "emerald",
     isFree: false,
+  },{
+    className: "bg-gradient-to-br from-blue-500 via-fuchsia-500 to-purple-500",
+    label: "Неоновый",
+    value: "neon",
+    isFree: true,
   }
 ];
 
