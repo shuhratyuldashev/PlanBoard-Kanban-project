@@ -1,26 +1,103 @@
+import ProjectDropdown from "@/entities/project-dropdown/ui";
 import type { Project } from "@/shared/mock/projects";
-import { Globe, Lock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Badge } from "@/shared/ui/badge";
+import { Button } from "@/shared/ui/button";
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from "@/shared/ui/button-group";
+import { DropdownMenu, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/shared/ui/item";
+import {
+  ArrowUpRight,
+  Ellipsis,
+  Folder,
+  FolderOpen,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Dialog } from "@/shared/ui/dialog";
+import { CreateProjectModal } from "@/feature/create-new-project-modal/ui";
+import DeleteModal from "@/feature/delete-modal/ui";
 
 const ProjectCard = ({ id, name, isPublic }: Project) => {
+  const navigate = useNavigate();
+  const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
+
   return (
-    <Link
-      to={`/project/${id}`}
-      className="relative p-4 bg-primary text-white font-semibold rounded-lg"
-    >
-      <div className="absolute -top-3 left-0 w-[40%] h-5 bg-primary rounded-t-lg"></div>
-      <div className="flex justify-between mt-2">
-        <div>
-          <p className="text-xl">{name}</p>
-          <p className="opacity-80">12 задач</p>
-        </div>
-        <div>
-          <div className="flex items-center justify-center rounded-full p-1 text-primary bg-white">
-            {isPublic ? <Globe size={18} /> : <Lock size={18} />}
-          </div>
-        </div>
-      </div>
-    </Link>
+    <>
+    <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+          <CreateProjectModal
+            variant="edit"
+            onClose={() => setIsEditOpen(false)}
+          />
+        </Dialog>
+
+        <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
+          <DeleteModal
+            variant="delete"
+            onClose={() => setIsDeleteOpen(false)}
+          />
+        </Dialog>
+          <Item variant="outline">
+      <ItemMedia>
+        <Button
+          size="icon-lg"
+          aria-label={isPublic ? "Public project" : "Private project"}
+        >
+          {isPublic ? <FolderOpen /> : <Folder />}
+        </Button>
+      </ItemMedia>
+
+      <ItemContent>
+        <ItemTitle>
+          {name} 
+          <Badge>
+          {isPublic ? "Публичный" : "Приватный "}
+          </Badge>
+          </ItemTitle>
+        <ItemDescription>
+           10 Участников
+        </ItemDescription>
+      </ItemContent>
+
+      <ItemActions>
+        <ButtonGroup>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => navigate(`/project/${id}`)}
+          >
+            <ArrowUpRight className="mr-1" />
+            Открыть
+          </Button>
+
+          <ButtonGroupSeparator />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary" size="icon-sm">
+                <Ellipsis />
+              </Button>
+            </DropdownMenuTrigger>
+            <ProjectDropdown
+              setIsEditOpen={setIsEditOpen}
+              setIsDeleteOpen={setIsDeleteOpen}
+            />
+          </DropdownMenu>
+          </ButtonGroup>
+      </ItemActions>
+    </Item>
+      </>
+  
   );
 };
 

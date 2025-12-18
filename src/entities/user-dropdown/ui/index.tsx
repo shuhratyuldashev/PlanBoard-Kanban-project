@@ -62,7 +62,7 @@ const UserAvatar = () => {
           <DropdownMenuSeparator />
           <DropdownMenuLabel>Действия</DropdownMenuLabel>
           <DropdownMenuItem
-            className="text-destructive focus:text-destructive"
+            variant="destructive"
             onClick={() => setIsLogOutOpen(true)}
           >
             <LogOut className="text-destructive" />

@@ -1,3 +1,4 @@
+import ProjectDropdown from "@/entities/project-dropdown/ui";
 import UserCard from "@/entities/user-card";
 import UserAvatar from "@/entities/user-dropdown/ui";
 import { CreateProjectModal } from "@/feature/create-new-project-modal/ui";
@@ -10,13 +11,9 @@ import { Button } from "@/shared/ui/button";
 import { Dialog, DialogTrigger } from "@/shared/ui/dialog";
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { EllipsisIcon, Pen, Trash, UserRoundCog, UserRoundPlus } from "lucide-react";
+import { EllipsisIcon, UserRoundCog, UserRoundPlus } from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
@@ -58,23 +55,10 @@ const Header = () => {
               <EllipsisIcon className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Мой Проект</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-
-            <DropdownMenuItem onSelect={() => setIsEditOpen(true)}>
-              <Pen className="mr-2 h-4 w-4" />
-              Редактировать
-            </DropdownMenuItem>
-
-            <DropdownMenuItem
-              onSelect={() => setIsDeleteOpen(true)}
-              className="text-destructive focus:text-destructive"
-            >
-              <Trash className="mr-2 h-4 w-4 text-destructive" />
-              Удалить
-            </DropdownMenuItem>
-          </DropdownMenuContent>
+          <ProjectDropdown
+            setIsEditOpen={setIsEditOpen}
+            setIsDeleteOpen={setIsDeleteOpen}
+          />
         </DropdownMenu>
 
         <div

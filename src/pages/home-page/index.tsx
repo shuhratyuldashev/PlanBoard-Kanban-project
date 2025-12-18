@@ -13,7 +13,6 @@ const HomePage = () => {
   return (
     <div className="relative w-full flex">
       <div className="fixed top-10 left-5 space-y-4">
-        {/* Рекламные баннера */}
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />
@@ -44,7 +43,6 @@ const HomePage = () => {
       </main>
 
       <div className="fixed right-5 top-10 space-y-4">
-        {/* Рекламные баннера */}
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />
         <div className="w-36 h-72 bg-primary/25 border border-primary rounded-lg" />

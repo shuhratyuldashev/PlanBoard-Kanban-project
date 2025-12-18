@@ -12,7 +12,6 @@ import {
 } from "@/shared/mock/columns";
 import Column from "@/widgets/colum/ui";
 import { ScrollArea, ScrollBar } from "@/shared/ui/scroll-area";
-import { Bot } from "lucide-react";
 import {
   DndContext,
   closestCenter,
@@ -23,6 +22,8 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useMemo, useState } from "react";
+import PremiumButton from "@/widgets/premium-float-button";
+import AssistantFloatButton from "@/widgets/assistant-float-button";
 
 type ColumnsState = {
   [columnId: string]: {
@@ -125,7 +126,6 @@ const ProjectPage = () => {
     }
   };
 
-  // helper: получить массив колонок для рендера
   const cols = useMemo(() => Object.values(columns), [columns]);
 
   return (
@@ -169,19 +169,20 @@ const ProjectPage = () => {
               </div>
             </DndContext>
 
-            {/* горизонтальный скролл */}
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
-          <Button
-            className="fixed right-7 bottom-7 hover:scale-110 duration-300 cursor-pointer"
-            size="icon-lg"
-          >
-            <Bot size={35} />
-          </Button>
+         <div className="fixed bottom-7 right-7">
+           <AssistantFloatButton />
+         </div>
+    
+
+          <PremiumButton />
         </div>
       </section>
     </main>
   );
 };
+
+
 
 export default ProjectPage;

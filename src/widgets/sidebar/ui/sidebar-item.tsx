@@ -1,33 +1,55 @@
-import { motion } from "framer-motion";
-import type React from "react";
+import { FolderKanban } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 interface SidebarItemProps {
-  icon: React.ReactNode;
   label: string;
   open: boolean;
   path: string;
+  current: boolean;
 }
 
 export default function SidebarItem({
-  icon,
   label,
   open,
   path,
+  current,
 }: SidebarItemProps) {
+  const [hover, setHover] = useState(false);
+
   return (
     <Link to={path}>
-      <motion.div className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-border rounded-lg mx-2 transition-colors">
-        {icon}
-        {open && (
+      <motion.div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className={`${current ? "bg-primary text-white" : "hover:bg-border "} relative flex items-center gap-3 px-4 p-2 cursor-pointer rounded-lg transition-colors`}
+      >
+        <FolderKanban />
+
+        {open ? (
           <motion.span
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-sm"
+            className="text-sm font-medium"
           >
             {label}
           </motion.span>
+        ) : (
+          <AnimatePresence>
+            {hover && (
+              <motion.div
+                initial={{ opacity: 0, x: 4 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 4 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+                className="absolute font-medium left-full top-1/2 transform -translate-y-1/2 ml-1 z-50 whitespace-nowrap bg-primary text-white text-xs px-2 py-1 rounded-md shadow-lg"
+              >
+                {label}
+              </motion.div>
+            )}
+          </AnimatePresence>
         )}
       </motion.div>
     </Link>

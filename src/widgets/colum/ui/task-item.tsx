@@ -17,6 +17,7 @@ import type { TaskType } from "@/shared/mock/columns";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { CreateTaskModal } from "@/feature/create-new-task-modal/ui";
+import { Badge } from "@/shared/ui/badge";
 
 export function TaskItem({ task }: { task: TaskType }) {
   const [isDeleteTaskModalOpen, setIsDeleteTaskModalOpen] =
@@ -46,13 +47,6 @@ export function TaskItem({ task }: { task: TaskType }) {
     zIndex: isDragging ? 40 : "auto",
   } as React.CSSProperties;
 
-  const importanceBg =
-    task.importance === "low"
-      ? "bg-green-500"
-      : task.importance === "medium"
-        ? "bg-yellow-500"
-        : "bg-red-500";
-
   return (
     // Item wrapper оставляем, но навешиваем ref и стиль от useSortable
     <Item
@@ -68,15 +62,15 @@ export function TaskItem({ task }: { task: TaskType }) {
       </ItemMedia>
       <ItemContent>
         <ItemHeader>
-          <div
-            className={`${importanceBg} px-2 py-1 rounded-md font-semibold text-white flex items-center justify-center`}
+          <Badge
+           variant={task.importance === "low" ? "success" : task.importance === "medium" ? "warning" : "destructive"}
           >
             {task.importance === "low"
               ? "Низкий"
               : task.importance === "medium"
                 ? "Средний"
                 : "Высокий"}
-          </div>
+          </Badge>
         </ItemHeader>
         <ItemTitle>{task.title}</ItemTitle>
         <ItemDescription>{task.description}</ItemDescription>
