@@ -10,7 +10,7 @@ export default function ProjectDropdown({
 }) {
     return (
         <DropdownMenuContent>
-            <DropdownMenuLabel>Мой Проект</DropdownMenuLabel>
+            <DropdownMenuLabel>Проект</DropdownMenuLabel>
             <DropdownMenuSeparator />
 
             <DropdownMenuItem onSelect={() => setIsEditOpen(true)}>
